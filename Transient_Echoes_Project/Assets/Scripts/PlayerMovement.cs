@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     public Rigidbody2D rb;
 
+    //Active Ability
+    public ActiveAbility CurrentAbility;
+
     private void Start()
     {
         CanMove = true;
@@ -22,12 +25,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if(PlayerNum == PlayerNum.Player1)
+        if (PlayerNum == PlayerNum.Player1)
         {
             MoveInput.x = Input.GetAxisRaw("Player 1 Horizontal");
             MoveInput.y = Input.GetAxisRaw("Player 1 Vertical");
         }
-        else if(PlayerNum == PlayerNum.Player2)
+        else if (PlayerNum == PlayerNum.Player2)
         {
             MoveInput.x = Input.GetAxisRaw("Player 2 Horizontal");
             MoveInput.y = Input.GetAxisRaw("Player 2 Vertical");
@@ -52,6 +55,19 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
         }
     }
+
+    void ActiveAbility()
+    {
+        switch (CurrentAbility)
+        {
+            case global::ActiveAbility.PushBlock:
+                break;
+            case global::ActiveAbility.Jump:
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 public enum PlayerNum
@@ -59,3 +75,11 @@ public enum PlayerNum
     Player1 = 0,
     Player2 = 1
 }
+
+public enum ActiveAbility
+{
+    None,
+    PushBlock,
+    Jump,
+}
+
