@@ -4,27 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IInitializePotentialDragHandler
 {
+    public ActiveAbility AbilityItem;
+
     private Canvas canvas;
     private CanvasGroup canvasGroup;
-    private RawImage rawImage;
+    private Image image;
 
-    private RectTransform rectTransform;
-    public Vector3 resetPosition;
+    [SerializeField] private RectTransform rectTransform;
+    public ItemSlot itemSlot;
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
-        rawImage = GetComponent<RawImage>();
+        image = GetComponent<Image>();
     }
 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        rawImage.maskable = false;
+        image.maskable = false;
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
     }
@@ -36,14 +37,23 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        rawImage.maskable = true;
+        image.maskable = true;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
-        rectTransform.anchoredPosition = resetPosition;
+
+        if(itemSlot != null)
+        {
+            rectTransform.position = itemSlot.rectTransform.position;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("onPointerDown");
+    }
+
+    public void OnInitializePotentialDrag(PointerEventData eventData)
+    {
+        eventData.useDragThreshold = false;
     }
 }

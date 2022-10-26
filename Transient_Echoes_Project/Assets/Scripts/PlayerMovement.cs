@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //Variables for Movement Controls
     public bool CanMove;
-    [SerializeField] private PlayerNum PlayerNum;
+    public PlayerNum PlayerNum;
     private Vector2 MoveInput;
     private Vector2 moveDirection;
 
