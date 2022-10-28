@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     //Active Ability
+    public KeyCode InteractKey;
     public ActiveAbility CurrentAbility;
 
     private void Start()
@@ -44,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+
+        if(Input.GetKeyDown(InteractKey))
+        {
+            StartCoroutine(ActiveAbility());
+        }
     }
 
     private void FixedUpdate()
@@ -56,13 +62,39 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void ActiveAbility()
+    private IEnumerator ActiveAbility()
     {
         switch (CurrentAbility)
         {
             case global::ActiveAbility.PushBlock:
                 break;
             case global::ActiveAbility.Dash:
+
+                Vector2 DashDir = MoveInput.normalized;
+                float DodgeCooldownCount;
+
+                if (DashDir.x != 0 || DashDir.y != 0)
+                {
+                    CanMove = false;
+                    float starttime = Time.time;
+
+                    Physics2D.IgnoreLayerCollision(0, 6, true);
+                    while (Time.time < starttime + 0.2f)
+                    {
+                        rb.velocity = new Vector2(DashDir.x * moveSpeed * 5, DashDir.y * moveSpeed * 5);
+
+                        yield return null;
+                    }
+
+                    CanMove = true;
+                    Physics2D.IgnoreLayerCollision(0, 6, false);
+
+                    DodgeCooldownCount = 50;
+                    while(DodgeCooldownCount > 0)
+                    {
+                        yield return new WaitForEndOfFrame();
+                    }
+                }
                 break;
             default:
                 break;

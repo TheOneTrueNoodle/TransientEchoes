@@ -12,8 +12,8 @@ public class Pedestal : MonoBehaviour
     private PlayerMovement Player2;
     private Camera usingCam;
 
-    private PlayerMovement playerWithInventoryOpen;
-
+    public PlayerMovement currentNearbyPlayer;
+    public int numPlayerInRange;
     private bool InventoryActive = false;
     [SerializeField] private GameObject OpenInventoryPrompt;
 
@@ -35,45 +35,87 @@ public class Pedestal : MonoBehaviour
 
     private void Update()
     {
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        OpenInventoryPrompt.SetActive(true);
-        if (collision.GetComponent<PlayerMovement>() && Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            PlayerMovement pMovement = collision.GetComponent<PlayerMovement>();
-            if(InventoryActive == false)
+            if (numPlayerInRange == 1)
             {
-                if (pMovement.PlayerNum == PlayerNum.Player1)
+                PlayerMovement pMovement = currentNearbyPlayer;
+                if(InventoryActive != true)
                 {
-                    usingCam = Player1cam;
-                    Player1.CanMove = false;
-                    playerWithInventoryOpen = Player1;
+                    if (pMovement.PlayerNum == PlayerNum.Player1)
+                    {
+                        usingCam = Player1cam;
+                        Player1.CanMove = false;
+                    }
+                    else
+                    {
+                        usingCam = Player2cam;
+                        Player2.CanMove = false;
+                    }
+
+                    InventoryActive = true;
+                    InventoryCanvas.gameObject.SetActive(true);
+                    InventoryCanvas.worldCamera = usingCam;
                 }
                 else
                 {
-                    usingCam = Player2cam;
-                    Player2.CanMove = false;
-                    playerWithInventoryOpen = Player2;
+                    InventoryActive = false;
+                    Player1.CanMove = true;
+                    Player2.CanMove = true;
+                    InventoryCanvas.gameObject.SetActive(false);
                 }
-
-                InventoryCanvas.gameObject.SetActive(true);
-                InventoryCanvas.worldCamera = usingCam;
             }
-            else if(InventoryActive == true)
+            else if (numPlayerInRange == 2)
             {
-                playerWithInventoryOpen.CanMove = true;
-                InventoryCanvas.gameObject.SetActive(false);
+                if (InventoryActive == true)
+                {
+                    InventoryActive = false;
+                    Player1.CanMove = true;
+                    Player2.CanMove = true;
+                    InventoryCanvas.gameObject.SetActive(false);
+                }
             }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<PlayerMovement>() == true)
+        {
+            numPlayerInRange++;
+            if(numPlayerInRange == 1)
+            {
+                PlayerMovement pMovement = collision.GetComponent<PlayerMovement>();
+                if (pMovement.PlayerNum == PlayerNum.Player1)
+                {
+                    currentNearbyPlayer = Player1;
+                }
+                else
+                {
+                    currentNearbyPlayer = Player2;
+                }
+            }
+        }
         OpenInventoryPrompt.SetActive(true);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.GetComponent<PlayerMovement>() == true)
+        {
+            numPlayerInRange--; 
+            if (numPlayerInRange == 1)
+            {
+                PlayerMovement pMovement = collision.GetComponent<PlayerMovement>();
+                if (pMovement.PlayerNum == PlayerNum.Player1)
+                {
+                    currentNearbyPlayer = Player2;
+                }
+                else
+                {
+                    currentNearbyPlayer = Player1;
+                }
+            }
+        }
         OpenInventoryPrompt.SetActive(false);
     }
 }
