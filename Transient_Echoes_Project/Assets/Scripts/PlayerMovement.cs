@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode InteractKey;
     public ActiveAbility CurrentAbility;
 
+    //PushBlockVariables
+    private PushBlock nearbyBlock;
+    private Vector3 PushDirection;
+
     private void Start()
     {
         CanMove = true;
@@ -67,7 +71,13 @@ public class PlayerMovement : MonoBehaviour
         switch (CurrentAbility)
         {
             case global::ActiveAbility.PushBlock:
+                if(nearbyBlock != null)
+                {
+                    nearbyBlock.Push(PushDirection, moveSpeed);
+                    nearbyBlock = null;
+                }
                 break;
+
             case global::ActiveAbility.Dash:
 
                 Vector2 DashDir = MoveInput.normalized;
@@ -96,8 +106,30 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
                 break;
+
             default:
                 break;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.GetComponent<PushBlock>() && col.gameObject.GetComponent<PushBlock>().isBeingPushed != true)
+        {
+            nearbyBlock = col.gameObject.GetComponent<PushBlock>();
+
+            foreach(ContactPoint2D hitPos in col.contacts)
+            {
+                PushDirection = new Vector3(-hitPos.normal.x, -hitPos.normal.y, 0);
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.GetComponent<PushBlock>() && col.gameObject.GetComponent<PushBlock>().isBeingPushed != true)
+        {
+            nearbyBlock = null;
         }
     }
 }
