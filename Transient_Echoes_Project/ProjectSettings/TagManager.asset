@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ability
+  - Bridge
   layers:
   - Default
   - TransparentFX

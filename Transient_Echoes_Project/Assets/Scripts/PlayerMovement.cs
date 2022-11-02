@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -122,6 +123,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 PushDirection = new Vector3(-hitPos.normal.x, -hitPos.normal.y, 0);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (CompareTag("Bridge"))
+        {
+            CanMove = true;
+            Physics2D.IgnoreLayerCollision(0, 6, false);
         }
     }
 
