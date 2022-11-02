@@ -289,7 +289,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -311,7 +311,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -501,7 +501,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -612,16 +612,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 1
       m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -8, y: -2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -801,7 +791,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1017,8 +1007,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 1b9cbec4afa53dc40ad62aa3fcd5041e, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 88c0cdd8f5c75344fbb40b4fdf80c4f3, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 17
     m_Data: {fileID: 21300000, guid: b3e205070e2310840b0896b7df5aa384, type: 3}
@@ -1026,22 +1016,22 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 13fc5dfbfe3e4b946805e5217636d6a3, type: 3}
   - m_RefCount: 35
     m_Data: {fileID: 21300000, guid: 008fbbbe8f949594cb1c7a6b91f2865d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 89f151a1fbf372f439a922037c725045, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 94094f6910cf07c42ad0df90a2fceb2d, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: f5e43ceaa92a796458bbc609cccd712a, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: b38aad3b3ca4fbc4bafd2664e60e6f22, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: b562642fc51331747a5346271e591484, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 4841d1c1ad56c1147b5de814ac803c7f, type: 3}
+    m_Data: {fileID: 21300000, guid: f5e43ceaa92a796458bbc609cccd712a, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 94094f6910cf07c42ad0df90a2fceb2d, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 69
+  - m_RefCount: 68
     m_Data:
       e00: 1
       e01: 0
@@ -1060,7 +1050,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 69
+  - m_RefCount: 68
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4387,6 +4377,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4339351017548675240, guid: da0032a1f61b2414cbc974ce6d4a27d1, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1892203513}
     - target: {fileID: 4339351017548675242, guid: da0032a1f61b2414cbc974ce6d4a27d1, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -4448,6 +4442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5778373146676531025, guid: 79bdd628bc05bdd44a356d51f3b3eb02, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 2042533488}
     - target: {fileID: 5778373146676531027, guid: 79bdd628bc05bdd44a356d51f3b3eb02, type: 3}
       propertyPath: m_RootOrder
       value: 1
