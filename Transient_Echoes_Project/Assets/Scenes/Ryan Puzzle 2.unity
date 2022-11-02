@@ -8281,6 +8281,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bridge: {fileID: 2098115720}
+  buttonSprite: {fileID: 541029137}
+  buttonColor: {r: 0.7294118, g: 0.09019608, b: 0.09019608, a: 1}
+  buttonPressedColor: {r: 0.46226418, g: 0, b: 0, a: 1}
 --- !u!70 &541029136
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -8553,6 +8556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bridge: {fileID: 751990806}
+  buttonSprite: {fileID: 922049460}
+  buttonColor: {r: 0.7294118, g: 0.09019608, b: 0.09019608, a: 1}
+  buttonPressedColor: {r: 0.46226418, g: 0, b: 0, a: 1}
 --- !u!70 &922049459
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -11230,6 +11236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bridge: {fileID: 363228565}
+  buttonSprite: {fileID: 1558183827}
+  buttonColor: {r: 0.7294118, g: 0.09019608, b: 0.09019608, a: 1}
+  buttonPressedColor: {r: 0.46226418, g: 0, b: 0, a: 1}
 --- !u!70 &1558183826
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -11343,6 +11352,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bridge: {fileID: 2042157870}
+  buttonSprite: {fileID: 1664415164}
+  buttonColor: {r: 0.7294118, g: 0.09019608, b: 0.09019608, a: 1}
+  buttonPressedColor: {r: 0.46226418, g: 0, b: 0, a: 1}
 --- !u!70 &1664415163
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -11675,6 +11687,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bridge: {fileID: 1868872839}
+  buttonSprite: {fileID: 1927780254}
+  buttonColor: {r: 0.7294118, g: 0.09019608, b: 0.09019608, a: 1}
+  buttonPressedColor: {r: 0.46226418, g: 0, b: 0, a: 1}
 --- !u!70 &1927780253
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
