@@ -8,6 +8,10 @@ public class Button : MonoBehaviour
     public GameObject Bridge;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Bridge.SetActive(true);
+        Bridge.SetActive(true); 
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        Bridge.SetActive(false);
     }
 }

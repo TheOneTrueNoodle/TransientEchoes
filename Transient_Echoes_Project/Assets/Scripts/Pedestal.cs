@@ -25,10 +25,12 @@ public class Pedestal : MonoBehaviour
             if(players[i].PlayerNum == PlayerNum.Player1)
             {
                 Player1 = players[i];
+                Player1cam = players[i].cam;
             }
             else
             {
                 Player2 = players[i];
+                Player2cam = players[i].cam;
             }
         }
     }

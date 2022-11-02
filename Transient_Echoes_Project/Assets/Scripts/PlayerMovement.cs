@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerNum PlayerNum;
     private Vector2 MoveInput;
     private Vector2 moveDirection;
+    public Camera cam;
 
     //Speed Variables
     public float moveSpeed = 5f;

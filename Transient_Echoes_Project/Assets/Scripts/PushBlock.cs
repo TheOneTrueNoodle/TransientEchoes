@@ -10,7 +10,7 @@ public class PushBlock : MonoBehaviour
     [SerializeField] private float _speedMultiplier;
     [SerializeField] private float _detectionRadius;
 
-    [SerializeField] private LayerMask blockingWalls;
+    [SerializeField] public LayerMask blockingWalls;
 
     private void Update()
     {
